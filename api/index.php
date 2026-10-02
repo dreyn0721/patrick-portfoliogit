@@ -10,761 +10,2211 @@ $description = "Welcome to Patrick's digital portfolio. Browse my latest project
 include("template-parts/header.php");
 ?>
 
-<!-- HERO -->
-<section class="home-header-hero hero">
-  <div class="hero-card junk-removal-hero">
 
-      <div class="card-inner-scrollable">
-        <a href="#contactForm"><h2 style="" href="#contactForm" class=" text-center scroll-form">Top-Rated<br> Junk Removal Services</h2></a>
 
-        <div class="card-inner-description">
-          <p>
-          Say goodbye to clutter without breaking a sweat! Our team of friendly pros does all the heavy lifting, hauling everything from old furniture to yard debris. With our extra-large trucks, we remove more junk in less time, saving you hassle and trips to the landfill.
-          </p>
-          <p>We don’t just clear your space- we make it sustainable. Whenever possible, we recycle or donate items, keeping your cleanup eco-friendly.</p>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrian Patrick Catag — Full-Stack Web Developer Portfolio">
+    <title>Andrian Patrick Catag | Full-Stack Web Developer</title>
+
+```
+<style>
+    /* =========================================================
+       ROOT / RESET
+    ========================================================= */
+
+    :root {
+        --bg: #080a0f;
+        --bg-soft: #0d1118;
+        --card: #11161f;
+        --card-hover: #151c27;
+        --border: #202936;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --muted-light: #cbd5e1;
+
+        --primary: #60a5fa;
+        --primary-bright: #38bdf8;
+        --secondary: #a78bfa;
+        --success: #34d399;
+
+        --glow: rgba(56, 189, 248, 0.15);
+
+        --max-width: 1240px;
+        --nav-width: 250px;
+
+        --radius: 18px;
+        --transition: 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background:
+            radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.07), transparent 25%),
+            radial-gradient(circle at 10% 50%, rgba(167, 139, 250, 0.05), transparent 25%),
+            var(--bg);
+        color: var(--text);
+        font-family:
+            Inter,
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+        line-height: 1.7;
+        min-height: 100vh;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    ::selection {
+        background: rgba(56, 189, 248, 0.25);
+        color: white;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .navbar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--nav-width);
+        background: rgba(8, 10, 15, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-right: 1px solid var(--border);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 20px;
+    }
+
+    .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 50px;
+    }
+
+    .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+            135deg,
+            var(--primary-bright),
+            var(--secondary)
+        );
+        color: #05070a;
+        font-weight: 900;
+        font-size: 17px;
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+    }
+
+    .brand-text strong {
+        display: block;
+        font-size: 14px;
+        letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 1px;
+    }
+
+    .nav-label {
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 10px;
+        font-weight: 700;
+        margin: 0 12px 15px;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .nav-links button {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        padding: 12px 13px;
+        border-radius: 11px;
+        text-align: left;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav-links button:hover {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        transform: translateX(3px);
+    }
+
+    .nav-icon {
+        width: 27px;
+        height: 27px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 13px;
+    }
+
+    .nav-footer {
+        margin-top: auto;
+        padding: 15px 12px;
+        border-top: 1px solid var(--border);
+        color: #64748b;
+        font-size: 11px;
+    }
+
+    .nav-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 5px;
+        color: var(--muted);
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--success);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(52, 211, 153, 0.7);
+    }
+
+    /* =========================================================
+       MOBILE HEADER
+    ========================================================= */
+
+    .mobile-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 70px;
+        background: rgba(8, 10, 15, 0.9);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        z-index: 1100;
+        padding: 0 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile-brand .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card);
+        color: var(--text);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+
+    .hamburger {
+        width: 20px;
+        height: 14px;
+        position: relative;
+    }
+
+    .hamburger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--text);
+        transition: var(--transition);
+    }
+
+    .hamburger span:nth-child(1) {
+        top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+        top: 6px;
+    }
+
+    .hamburger span:nth-child(3) {
+        top: 12px;
+    }
+
+    .menu-toggle.active .hamburger span:nth-child(1) {
+        top: 6px;
+        transform: rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .hamburger span:nth-child(3) {
+        top: 6px;
+        transform: rotate(-45deg);
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    main {
+        margin-left: var(--nav-width);
+    }
+
+    .container {
+        width: min(var(--max-width), calc(100% - 70px));
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 110px 0;
+        position: relative;
+    }
+
+    section:not(:first-child) {
+        border-top: 1px solid rgba(255, 255, 255, 0.035);
+    }
+
+    .section-heading {
+        margin-bottom: 50px;
+    }
+
+    .eyebrow {
+        color: var(--primary-bright);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.1;
+        letter-spacing: -0.045em;
+    }
+
+    .section-heading p {
+        max-width: 650px;
+        color: var(--muted);
+        margin-top: 15px;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 70px;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 310px 1fr;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .profile-wrapper {
+        position: relative;
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: linear-gradient(145deg, #17202d, #0b0f15);
+        box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.45),
+            0 0 60px rgba(56, 189, 248, 0.07);
+    }
+
+    .profile-glow {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background: var(--primary-bright);
+        opacity: 0.08;
+        filter: blur(70px);
+        left: 50px;
+        bottom: -30px;
+        z-index: -1;
+    }
+
+    .profile-badge {
+        position: absolute;
+        bottom: -16px;
+        right: 5px;
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(17, 22, 31, 0.92);
+        backdrop-filter: blur(12px);
+        font-size: 12px;
+        color: var(--muted-light);
+    }
+
+    .hero-content .eyebrow {
+        margin-bottom: 15px;
+    }
+
+    .hero-title {
+        font-size: clamp(42px, 6vw, 76px);
+        line-height: 0.98;
+        letter-spacing: -0.065em;
+        margin-bottom: 22px;
+    }
+
+    .hero-title .gradient {
+        background: linear-gradient(
+            100deg,
+            #f8fafc 20%,
+            var(--primary-bright) 55%,
+            var(--secondary)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero-subtitle {
+        color: var(--muted-light);
+        font-size: 18px;
+        max-width: 760px;
+        margin-bottom: 28px;
+    }
+
+    .skill-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 30px;
+    }
+
+    .pill {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--muted-light);
+        padding: 6px 11px;
+        border-radius: 999px;
+        font-size: 12px;
+        transition: var(--transition);
+    }
+
+    .pill:hover {
+        border-color: rgba(56, 189, 248, 0.4);
+        color: var(--primary-bright);
+        background: rgba(56, 189, 248, 0.05);
+    }
+
+    .hero-copy {
+        color: var(--muted);
+        max-width: 850px;
+    }
+
+    .hero-copy p {
+        margin-bottom: 18px;
+    }
+
+    .hero-copy strong {
+        color: var(--muted-light);
+        font-weight: 600;
+    }
+
+    .hero-end {
+        color: var(--primary-bright);
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+
+    /* =========================================================
+       EXPERTISE
+    ========================================================= */
+
+    .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .expertise-card {
+        background: linear-gradient(
+            145deg,
+            rgba(17, 22, 31, 0.95),
+            rgba(13, 17, 24, 0.85)
+        );
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 26px;
+        transition: var(--transition);
+    }
+
+    .expertise-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(56, 189, 248, 0.2);
+        background: var(--card-hover);
+    }
+
+    .expertise-card.full {
+        grid-column: 1 / -1;
+    }
+
+    .category-heading {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.15);
+        border-radius: 11px;
+    }
+
+    .category-heading h3 {
+        font-size: 17px;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tag {
+        color: var(--muted-light);
+        border: 1px solid #263140;
+        background: #0c1118;
+        padding: 7px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        transition: var(--transition);
+    }
+
+    .tag:hover {
+        color: var(--primary-bright);
+        border-color: rgba(56, 189, 248, 0.35);
+        transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .experience-card {
+        position: relative;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 30px;
+        overflow: hidden;
+    }
+
+    .experience-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            var(--primary-bright),
+            var(--secondary)
+        );
+    }
+
+    .experience-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+
+    .experience-number {
+        color: #334155;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+    }
+
+    .experience-card h3 {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .experience-card .company {
+        color: var(--primary-bright);
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    .experience-section {
+        margin-top: 22px;
+    }
+
+    .experience-section h4 {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .experience-section ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 22px;
+    }
+
+    .experience-section li {
+        color: var(--muted);
+        font-size: 13px;
+        padding-left: 18px;
+        position: relative;
+    }
+
+    .experience-section li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--primary-bright);
+        font-weight: 900;
+    }
+
+    /* =========================================================
+       PERSONAL
+    ========================================================= */
+
+    .personal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .info-card {
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 28px;
+    }
+
+    .info-card h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 13px;
+    }
+
+    .info-row:last-child {
+        border-bottom: 0;
+    }
+
+    .info-row span:first-child {
+        color: var(--muted);
+    }
+
+    .info-row span:last-child {
+        color: var(--muted-light);
+        text-align: right;
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: 25px;
+        align-items: start;
+    }
+
+    .contact-intro {
+        border: 1px solid var(--border);
+        background:
+            radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 40%),
+            var(--card);
+        border-radius: var(--radius);
+        padding: 30px;
+    }
+
+    .contact-intro h3 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .contact-intro p {
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .contact-note {
+        margin-top: 25px;
+        padding: 14px;
+        border: 1px dashed #344154;
+        border-radius: 11px;
+        color: #94a3b8;
+        font-size: 12px;
+    }
+
+    .contact-form {
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 30px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .form-group.full {
+        grid-column: 1 / -1;
+    }
+
+    .form-group label {
+        color: var(--muted-light);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        background: #0a0e14;
+        border: 1px solid #263140;
+        border-radius: 10px;
+        color: var(--text);
+        outline: none;
+        padding: 12px 13px;
+        transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        border-color: rgba(56, 189, 248, 0.6);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.07);
+    }
+
+    .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .submit-button {
+        margin-top: 20px;
+        width: 100%;
+        border: 0;
+        border-radius: 10px;
+        padding: 13px;
+        background: linear-gradient(
+            100deg,
+            var(--primary-bright),
+            var(--secondary)
+        );
+        color: #05070a;
+        font-weight: 800;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+        border-top: 1px solid var(--border);
+        margin-left: var(--nav-width);
+        background: #06080c;
+    }
+
+    .footer-inner {
+        width: min(var(--max-width), calc(100% - 70px));
+        margin: 0 auto;
+        padding: 60px 0 30px;
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .footer-brand h3 {
+        font-size: 25px;
+        letter-spacing: -0.04em;
+    }
+
+    .footer-brand p {
+        color: var(--muted);
+        max-width: 420px;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+
+    .footer-code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        color: #475569;
+        font-size: 12px;
+        margin-top: 18px;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .footer-link {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: #64748b;
+        font-size: 11px;
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+        :root {
+            --nav-width: 220px;
+        }
+
+        .hero-grid {
+            grid-template-columns: 240px 1fr;
+            gap: 40px;
+        }
+
+        .profile-image {
+            width: 230px;
+            height: 300px;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 45px));
+        }
+
+        .footer-inner {
+            width: min(var(--max-width), calc(100% - 45px));
+        }
+    }
+
+    @media (max-width: 850px) {
+        .navbar {
+            transform: translateX(-100%);
+            transition: transform 0.35s ease;
+            width: 280px;
+            box-shadow: 20px 0 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .navbar.open {
+            transform: translateX(0);
+        }
+
+        .mobile-header {
+            display: flex;
+        }
+
+        main {
+            margin-left: 0;
+        }
+
+        footer {
+            margin-left: 0;
+        }
+
+        .hero {
+            padding-top: 130px;
+        }
+
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .skill-pills {
+            justify-content: center;
+        }
+
+        .hero-copy {
+            text-align: left;
+        }
+
+        .expertise-grid,
+        .personal-grid,
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .expertise-card.full {
+            grid-column: auto;
+        }
+
+        .experience-section ul {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: calc(100% - 30px);
+        }
+
+        .footer-inner {
+            width: calc(100% - 30px);
+        }
+
+        section {
+            padding: 75px 0;
+        }
+
+        .hero {
+            padding-top: 105px;
+        }
+
+        .profile-image {
+            width: 210px;
+            height: 260px;
+        }
+
+        .hero-title {
+            font-size: 43px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+        }
+
+        .experience-card,
+        .expertise-card,
+        .info-card,
+        .contact-form,
+        .contact-intro {
+            padding: 21px;
+        }
+
+        .experience-top {
+            flex-direction: column;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full {
+            grid-column: auto;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            flex-direction: column;
+        }
+
+        .footer-links {
+            justify-content: flex-start;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        .reveal {
+            opacity: 1;
+            transform: none;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================================================
+     MOBILE HEADER
+========================================================== -->
+
+<header class="mobile-header">
+    <div class="mobile-brand">
+        <div class="brand-mark">AC</div>
+
+        <div class="brand-text">
+            <strong>Andrian Catag</strong>
+            <span>Full-Stack Developer</span>
         </div>
-      </div>
-
-  </div>
-
-  <div class="hero-card move-hero">
-    
-    <div class="card-inner-scrollable">
-      <a href="#contactForm"><h2 style="" href="#contactForm" class=" text-center scroll-form">Top-Rated<br> Moving Services</h2></a>
-
-      <div class="card-inner-description">
-        <p>
-        Say goodbye to heavy lifting and complicated moves. Our professional moving team handles everything from carefully packing and loading furniture to transporting and setting up your belongings safely at your new location.
-      </p>
-      <p>With our extra-large trucks and organized crew, we move more in fewer trips, saving you time, stress, and unnecessary delays. We don’t just move your belongings, we protect them. From proper wrapping and secure loading to careful placement in your new space, we treat every move with precision and care.
-Whether you're relocating your home or business, we make the transition smooth, efficient, and hassle-free.</p>
-      </div>
     </div>
 
-  </div>
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+    >
+        <span class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+</header>
 
 
-</section>
+<!-- =========================================================
+     SIDE NAVIGATION
+========================================================== -->
 
-<!-- WHAT WE DO -->
-<section class="section-props what-we-do">
+<nav class="navbar" id="navbar">
 
+    <div class="nav-brand">
+        <div class="brand-mark">AC</div>
 
-  <h2 class="text-center mb-5" style="color:var(--eco-green)">What we do</h2>
-  <div class="container">
-    <div class="row g-4">
-
-      <a href="/junkremoval.php" class="col-md-4">
-        <div class="service-card">
-          <img src="/assets/img/eco-friendly disposal.png">
-          <h5 class="mt-3">Full-Service Junk Removal</h5>
-          <ul>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Free, no-obligation estimates</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Same-day appointments available</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Pay only for the space you use</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Eco-friendly disposal & recycling</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Large 18-cubic-yard truck capacity</li>
-
-
-          </ul>
-          <button class="btn-eco wwd-modal-btn "  data-bs-toggle="modal" data-bs-target="#offer1">Book Your Junk Removal Today</button>
-
-
-
-
-
+        <div class="brand-text">
+            <strong>Andrian Catag</strong>
+            <span>Full-Stack Developer</span>
         </div>
-      </a>
+    </div>
 
-      <div class="modal fade" id="offer1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header justify-content-between">
-              <p></p>
-              <h2 class="modal-title fs-5 " id="exampleModalLabel">Full-Service Junk Removal</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="nav-label">Navigation</div>
+
+    <ul class="nav-links">
+
+        <!--
+            These buttons intentionally do not navigate anywhere.
+            Replace them with your own links later.
+        -->
+
+        <li>
+            <button type="button" data-target="expertise">
+                <span class="nav-icon">⚡</span>
+                Expertise
+            </button>
+        </li>
+
+        <li>
+            <button type="button" data-target="experience">
+                <span class="nav-icon">🚀</span>
+                Experience
+            </button>
+        </li>
+
+        <li>
+            <button type="button" data-target="personal">
+                <span class="nav-icon">👤</span>
+                Personal Info
+            </button>
+        </li>
+
+        <li>
+            <button type="button" data-target="contact">
+                <span class="nav-icon">✉️</span>
+                Contact
+            </button>
+        </li>
+
+    </ul>
+
+    <div class="nav-footer">
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Open to opportunities
+        </div>
+
+        <div>© 2026 Andrian Patrick Catag</div>
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================== -->
+
+<main>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="hero-grid">
+
+                <div class="profile-wrapper reveal">
+
+                    <!-- Replace this dummy image with your own -->
+                    <img
+                        class="profile-image"
+                        src="https://placehold.co/560x700/111827/60a5fa?text=YOUR+PHOTO"
+                        alt="Andrian Patrick Catag profile placeholder"
+                    >
+
+                    <div class="profile-glow"></div>
+
+                    <div class="profile-badge">
+                        💻 10+ Years Coding
+                    </div>
+
+                </div>
+
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">
+                        👋 Hello, World!
+                    </div>
+
+                    <h1 class="hero-title">
+                        I'm Andrian Patrick
+                        <span class="gradient">Catag.</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        A passionate <strong>💻 Full-Stack Web Developer</strong>
+                        building dynamic, secure, scalable, and
+                        user-focused digital experiences.
+                    </p>
+
+                    <div class="skill-pills">
+                        <span class="pill">PHP</span>
+                        <span class="pill">Laravel</span>
+                        <span class="pill">WordPress</span>
+                        <span class="pill">CodeIgniter</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">APIs</span>
+                        <span class="pill">Git</span>
+                    </div>
+
+
+                    <div class="hero-copy">
+
+                        <p>
+                            👋 I'm Andrian Patrick Catag, a passionate
+                            💻 Web Developer with over 10 years of experience
+                            building dynamic, secure, and scalable websites
+                            and applications.
+                        </p>
+
+                        <p>
+                            🛠️ <strong>My core skills include:</strong>
+                            PHP, API Integration, WordPress Development
+                            (Themes & Plugins), CodeIgniter, Laravel,
+                            CMS Development, DNS Management, JavaScript,
+                            Python, Tailwind CSS, Communications Development,
+                            and Git.
+                        </p>
+
+                        <p>
+                            🧩 I specialize in creating custom solutions
+                            that are clean, efficient, and user-focused.
+                            Bringing ideas to life through code and
+                            collaboration. Whether it's crafting a new
+                            WordPress plugin or scaling a Laravel-based
+                            application, I'm all about delivering
+                            high-quality results that make an impact.
+                        </p>
+
+                        <p>
+                            📚 I love my work as a Full-Stack Web Developer
+                            and am always eager to learn new technologies.
+                            Since the tech industry evolves rapidly, I
+                            believe it's essential to stay updated by
+                            continuously learning and exploring new tools
+                            and trends in my spare time.
+                        </p>
+
+                        <p>
+                            🎯 When I take on a project, I approach it with
+                            full commitment and urgency, aiming to deliver
+                            the best possible quality as efficiently as I
+                            can. While it's true that developers may
+                            occasionally encounter errors, I take
+                            responsibility by implementing thorough
+                            self-testing procedures before submitting any
+                            work. I deeply value your time, and I make it
+                            a priority to ensure that no time is wasted
+                            on sloppy or incomplete output.
+                        </p>
+
+                        <p>
+                            🔎 I consider myself a highly resourceful
+                            developer. Even when I'm confident in my
+                            approach, I take the time to explore whether
+                            there might be newer, more efficient, or more
+                            reliable methods available. As technology
+                            evolves rapidly, staying open to continuous
+                            improvement is essential — there's always
+                            something new that can enhance the way we
+                            build and solve problems.
+                        </p>
+
+                        <p>
+                            🤝 <strong>Let's build something great together!</strong>
+                        </p>
+
+                        <div class="hero-end">...</div>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="modal-body">
-              <form class="row g-3 main-form" id="" style="scroll-margin-top: 210px;">
-                <div class="response-container">
-                </div>
 
-                <div class="col-md-6"><label>Firstname:</label><input class="form-control firstname" placeholder="First name"></div>
-                <div class="col-md-6"><label>Lastname:</label><input class="form-control lastname" placeholder="Last name"></div>
-                <div class="col-md-6"><label>Email:</label><input class="form-control email" placeholder="Email"></div>
-                <div class="col-md-6"><label>Phone number</label><input class="form-control phone" placeholder="Phone number"></div>
-                <div class="col-md-12"><label>Zipcode</label><input class="form-control zipcode" placeholder="Zip code"></div>
+        </div>
 
-                <div class="col-md-12"><label>Location:</label><input class="form-control location-from" placeholder="Location"></div>
-                <div class="col-md-12"><label>Location to: <small>(optional)</small></label><input class="form-control location-to" placeholder="Location To"></div>
+    </section>
 
 
-                <div class="col-md-12"><label>Message</label><textarea name="messagedata" class="form-control messagedata" rows="5" placeholder="Message"></textarea></div>
+    <!-- =====================================================
+         EXPERTISE
+    ====================================================== -->
 
-                <div class="col-md-12 radio-input-container mt-5">
-                  <h3>Select Service</h3>
-                  <div class="radio-group">
+    <section id="expertise">
 
-                    <input type="hidden" name="servicesSelected" class="services-selected" value="Junk Removal">
+        <div class="container">
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk Removal" checked>
-                      <span class="radio-content">
-                        <strong>Junk Removal</strong>
-                      </span>
-                    </label>
+            <div class="section-heading reveal">
+                <div class="eyebrow">⚡ What I Do</div>
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Move-Out" >
-                      <span class="radio-content">
-                        <strong>Move-Out</strong>
-                      </span>
-                    </label>
+                <h2>Expertise</h2>
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk and Moveout" >
-                      <span class="radio-content">
-                        <strong>Junk and Moveout</strong>
-                      </span>
-                    </label>
-
-
-
-                  </div>
-                </div>
-
-                <div class="col-12 text-center">
-                  <button class="btn-eco submit-btn">Submit and we will call you</button>
-                </div>
-              </form>
+                <p>
+                    A practical toolkit built around backend engineering,
+                    web applications, automation, APIs, databases,
+                    and modern frontend technologies.
+                </p>
             </div>
-          </div>
-        </div>
-      </div>
 
 
+            <div class="expertise-grid">
 
 
-      <a href="/moveout.php" class="col-md-4">
-        <div class="service-card">
-          <img src="/assets/img/d6bb469a-1577-4a43-b2b8-6d3e4a3b2405.jpg">
-          <h5 class="mt-3">Move Out</h5>
-          <ul>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> We help move, load, and transport your belongings</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Convenient pickup and drop-off</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Driveway-friendly, no heavy lifting for you</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Flexible scheduling to fit your timeline</li>
-          </ul>
-          <button class="btn-eco wwd-modal-btn " data-bs-toggle="modal" data-bs-target="#offer2">Schedule Your Move-Out Assistance</button>
-        </div>
-      </a>
+                <article class="expertise-card full reveal">
 
-      <div class="modal fade" id="offer2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header justify-content-between">
-              <p></p>
-              <h2 class="modal-title fs-5 " id="exampleModalLabel">Schedule Your Move-Out Assistance</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="category-heading">
+                        <div class="category-icon">🧠</div>
+                        <h3>Main Skills / Focus</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">🕷️ Web Scraping</span>
+                        <span class="tag">🤖 User Interaction Bots</span>
+                        <span class="tag">🐍 IP Manipulation with Python</span>
+                        <span class="tag">🧩 Deep PHP Logic</span>
+                        <span class="tag">📡 Web Monitoring</span>
+                        <span class="tag">⏱️ Cronjob Scripts</span>
+                        <span class="tag">🤝 CRM</span>
+                        <span class="tag">🗄️ Huge Database Management</span>
+                        <span class="tag">⚙️ PHP Performance Optimization</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">💻</div>
+                        <h3>General</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Ajax</span>
+                        <span class="tag">jQuery</span>
+                        <span class="tag">HTML / TPL</span>
+                        <span class="tag">CSS / SCSS</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">CRM</span>
+                        <span class="tag">RESTful APIs</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Webhosting</span>
+                        <span class="tag">DNS Management</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">🧱</div>
+                        <h3>Developments</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">CodeIgniter</span>
+                        <span class="tag">WordPress</span>
+                        <span class="tag">OpenCart</span>
+                        <span class="tag">SuiteCRM</span>
+                        <span class="tag">Joomla</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">🗄️</div>
+                        <h3>Databases</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">🧰</div>
+                        <h3>Applications</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Postman</span>
+                        <span class="tag">npm / nvm</span>
+                        <span class="tag">Composer</span>
+                        <span class="tag">MongoDB Compass</span>
+                        <span class="tag">Workbench</span>
+                        <span class="tag">Amazon Workspace</span>
+                        <span class="tag">VSCode / Sublime</span>
+                        <span class="tag">WAMP / XAMPP</span>
+                        <span class="tag">FileZilla / WinSCP</span>
+                        <span class="tag">Photoshop</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">🔌</div>
+                        <h3>3rd Party Web APIs</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Quickbase — Database</span>
+                        <span class="tag">Twilio — SMS / Voice</span>
+                        <span class="tag">Letterfriend — Email</span>
+                        <span class="tag">Sendy — Email</span>
+                        <span class="tag">DNSMadeEasy — DNS</span>
+                        <span class="tag">Amazon S3 — Cloud Storage</span>
+                    </div>
+
+                </article>
+
+
+                <article class="expertise-card full reveal">
+
+                    <div class="category-heading">
+                        <div class="category-icon">🧩</div>
+                        <h3>Web Plugins & UI Tools</h3>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Font Awesome</span>
+                        <span class="tag">Alpine.js</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">TW-elements</span>
+                        <span class="tag">Frostbite</span>
+                    </div>
+
+                </article>
+
             </div>
-            <div class="modal-body">
-              <form class="row g-3 main-form" id="" style="scroll-margin-top: 210px;">
-                <div class="response-container">
-                </div>
 
-                <div class="col-md-6"><label>Firstname:</label><input class="form-control firstname" placeholder="First name"></div>
-                <div class="col-md-6"><label>Lastname:</label><input class="form-control lastname" placeholder="Last name"></div>
-                <div class="col-md-6"><label>Email:</label><input class="form-control email" placeholder="Email"></div>
-                <div class="col-md-6"><label>Phone number</label><input class="form-control phone" placeholder="Phone number"></div>
-                <div class="col-md-12"><label>Zipcode</label><input class="form-control zipcode" placeholder="Zip code"></div>
+        </div>
 
-                <div class="col-md-12"><label>Location:</label><input class="form-control location-from" placeholder="Location"></div>
-                <div class="col-md-12"><label>Location to: <small>(optional)</small></label><input class="form-control location-to" placeholder="Location To"></div>
+    </section>
 
 
-                <div class="col-md-12"><label>Message</label><textarea name="messagedata" class="form-control messagedata" rows="5" placeholder="Message"></textarea></div>
+    <!-- =====================================================
+         EXPERIENCE
+    ====================================================== -->
 
-                <div class="col-md-12 radio-input-container mt-5">
-                  <h3>Select Service</h3>
-                  <div class="radio-group">
+    <section id="experience">
 
-                    <input type="hidden" name="servicesSelected" class="services-selected" value="Move-Out">
+        <div class="container">
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk Removal" >
-                      <span class="radio-content">
-                        <strong>Junk Removal</strong>
-                      </span>
-                    </label>
-
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Move-Out" checked>
-                      <span class="radio-content">
-                        <strong>Move-Out</strong>
-                      </span>
-                    </label>
-
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk and Moveout" >
-                      <span class="radio-content">
-                        <strong>Junk and Moveout</strong>
-                      </span>
-                    </label>
-
-
-
-                  </div>
-                </div>
-
-                <div class="col-12 text-center">
-                  <button class="btn-eco submit-btn">Submit and we will call you</button>
-                </div>
-              </form>
+            <div class="section-heading reveal">
+                <div class="eyebrow">🚀 Selected Work</div>
+                <h2>Recent Experience</h2>
+                <p>
+                    A selection of systems, applications, integrations,
+                    and development work from recent projects.
+                </p>
             </div>
-          </div>
-        </div>
-      </div>
 
 
+            <div class="experience-list">
 
 
+                <!-- COVERAGE ONE -->
+
+                <article class="experience-card reveal">
+
+                    <div class="experience-top">
+
+                        <div>
+                            <div class="experience-number">01 / WORDPRESS</div>
+
+                            <h3>
+                                Coverage One Insurance
+                            </h3>
+
+                            <div class="company">
+                                Recent WordPress Project
+                            </div>
+                        </div>
+
+                        <div class="tag">🌐 WordPress</div>
+
+                    </div>
 
 
-      <a href="/junkremovalandmoveout.php" class="col-md-4">
-        <div class="service-card">
-          <img src="/assets/img/junk removal.png">
-          <h5 class="mt-3">Junk Removal & Move Out</h5>
-          <ul>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> We move, load, and remove your items</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Convenient pickup and drop-off</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Eco-friendly disposal & recycling</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Flexible scheduling to fit your timeline</li>
-            <li><i class="fa fa-check-square" aria-hidden="true"></i> Large capacity for any size project</li>
-          </ul>
-          <button class="btn-eco wwd-modal-btn " data-bs-toggle="modal" data-bs-target="#offer3">Get Full-Service Help Now</button>
-        </div>
-      </a>
+                    <div class="experience-section">
 
-      <div class="modal fade" id="offer3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header justify-content-between">
-              <p></p>
-              <h2 class="modal-title fs-5 " id="exampleModalLabel">Get Full-Service Help Now</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4>Project Highlights</h4>
+
+                        <ul>
+                            <li>
+                                Landing page used to monitor web company
+                                traffic as requested by the client.
+                            </li>
+
+                            <li>
+                                User registration submitted to an external
+                                AWS database server.
+                            </li>
+
+                            <li>
+                                Form integrated with ActiveProspect for
+                                independent consent verification.
+                            </li>
+
+                            <li>
+                                Letterfriend API used to send an email
+                                for each form entry.
+                            </li>
+
+                            <li>
+                                Twilio API used to send SMS notifications
+                                for each form entry.
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BROWSERCALL -->
+
+                <article class="experience-card reveal">
+
+                    <div class="experience-top">
+
+                        <div>
+                            <div class="experience-number">02 / CODEIGNITER</div>
+
+                            <h3>
+                                Call Center Aircaller & Admin GUI
+                            </h3>
+
+                            <div class="company">
+                                browsercall
+                            </div>
+                        </div>
+
+                        <div class="tag">☎️ CodeIgniter</div>
+
+                    </div>
+
+
+                    <div class="experience-section">
+
+                        <h4>🖥️ Admin</h4>
+
+                        <ul>
+                            <li>Agent status monitoring dashboard.</li>
+                            <li>Daily and weekly call/sales statistics.</li>
+                            <li>Closing call statistics.</li>
+                            <li>Join, listen, whisper, and mute actions.</li>
+                            <li>Agent timesheets with date-range filtering.</li>
+                            <li>View and listen to call recordings.</li>
+                            <li>Voicemail management.</li>
+                            <li>Hold music management.</li>
+                            <li>Callback tracker.</li>
+                            <li>Customer-state assignment.</li>
+                            <li>Agent call-duration tracking.</li>
+                            <li>Vendor and campaign management.</li>
+                            <li>Campaign assignment to agents.</li>
+                            <li>Carrier extension management.</li>
+                            <li>Call transfer log monitoring.</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="experience-section">
+
+                        <h4>🎧 Agents</h4>
+
+                        <ul>
+                            <li>Make and receive calls while available.</li>
+                            <li>Add someone to an active call.</li>
+                            <li>Remove someone from a call.</li>
+                            <li>Mute and unmute participants.</li>
+                            <li>Transfer calls.</li>
+                            <li>Make call dispositions.</li>
+                            <li>Pause the dialer to stop receiving calls.</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="experience-section">
+
+                        <h4>⚙️ Back-End Systems</h4>
+
+                        <ul>
+                            <li>Twilio Voice and SMS API integration.</li>
+                            <li>Automatic callback SMS reminders.</li>
+                            <li>Agent and customer call tracking.</li>
+                            <li>Smart customer call assignment.</li>
+                            <li>Automatic agent status updates.</li>
+                            <li>Customer referral tracking.</li>
+                            <li>External call-transfer tracking.</li>
+                            <li>Marketing partner monitoring.</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SPLASHING MONKEY -->
+
+                <article class="experience-card reveal">
+
+                    <div class="experience-top">
+
+                        <div>
+                            <div class="experience-number">03 / OPENCART</div>
+
+                            <h3>
+                                Splashing Monkey
+                            </h3>
+
+                            <div class="company">
+                                Recent OpenCart Project
+                            </div>
+                        </div>
+
+                        <div class="tag">🛒 OpenCart</div>
+
+                    </div>
+
+
+                    <div class="experience-section">
+
+                        <h4>Project Highlights</h4>
+
+                        <ul>
+                            <li>Custom OpenCart theme.</li>
+                            <li>Custom extension modules.</li>
+                            <li>Third-party payment API integrations.</li>
+                            <li>Stripe integration.</li>
+                            <li>PayPal integration.</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
             </div>
-            <div class="modal-body">
-              <form class="row g-3 main-form" id="" style="scroll-margin-top: 210px;">
-                <div class="response-container">
-                </div>
 
-                <div class="col-md-6"><label>Firstname:</label><input class="form-control firstname" placeholder="First name"></div>
-                <div class="col-md-6"><label>Lastname:</label><input class="form-control lastname" placeholder="Last name"></div>
-                <div class="col-md-6"><label>Email:</label><input class="form-control email" placeholder="Email"></div>
-                <div class="col-md-6"><label>Phone number</label><input class="form-control phone" placeholder="Phone number"></div>
-                <div class="col-md-12"><label>Zipcode</label><input class="form-control zipcode" placeholder="Zip code"></div>
+        </div>
 
-                <div class="col-md-12"><label>Location:</label><input class="form-control location-from" placeholder="Location"></div>
-                <div class="col-md-12"><label>Location to: <small>(optional)</small></label><input class="form-control location-to" placeholder="Location To"></div>
+    </section>
 
 
-                <div class="col-md-12"><label>Message</label><textarea name="messagedata" class="form-control messagedata" rows="5" placeholder="Message"></textarea></div>
+    <!-- =====================================================
+         PERSONAL INFORMATION
+    ====================================================== -->
 
-                <div class="col-md-12 radio-input-container mt-5">
-                  <h3>Select Service</h3>
-                  <div class="radio-group">
+    <section id="personal">
 
-                    <input type="hidden" name="servicesSelected" class="services-selected" value="Junk and Moveout">
+        <div class="container">
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk Removal" >
-                      <span class="radio-content">
-                        <strong>Junk Removal</strong>
-                      </span>
-                    </label>
+            <div class="section-heading reveal">
+                <div class="eyebrow">👤 Beyond the Code</div>
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Move-Out" >
-                      <span class="radio-content">
-                        <strong>Move-Out</strong>
-                      </span>
-                    </label>
+                <h2>Personal Information</h2>
 
-                    <label class="radio-card">
-                      <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk and Moveout" checked>
-                      <span class="radio-content">
-                        <strong>Junk and Moveout</strong>
-                      </span>
-                    </label>
-
-
-
-                  </div>
-                </div>
-
-                <div class="col-12 text-center">
-                  <button class="btn-eco submit-btn">Submit and we will call you</button>
-                </div>
-              </form>
+                <p>
+                    Placeholder information for now. Replace these entries
+                    with your actual details when you're ready.
+                </p>
             </div>
-          </div>
+
+
+            <div class="personal-grid">
+
+                <div class="info-card reveal">
+
+                    <h3>🙋 Personal Details</h3>
+
+                    <div class="info-row">
+                        <span>Full Name</span>
+                        <span>Andrian Patrick Catag</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Location</span>
+                        <span>[Your Location]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Email</span>
+                        <span>[your@email.com]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Phone</span>
+                        <span>[Your Phone Number]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Availability</span>
+                        <span>Open to opportunities</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Role</span>
+                        <span>Full-Stack Web Developer</span>
+                    </div>
+
+                </div>
+
+
+                <div class="info-card reveal">
+
+                    <h3>🎓 Education & Certifications</h3>
+
+                    <div class="info-row">
+                        <span>Education</span>
+                        <span>[Your Degree / Course]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>School</span>
+                        <span>[Your School / University]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Graduation</span>
+                        <span>[Year]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Certification</span>
+                        <span>[Certification Name]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Additional Training</span>
+                        <span>[Training / Course]</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Interests</span>
+                        <span>Technology · Coding · Learning</span>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
 
-    </div>
-  </div>
-</section>
+    </section>
 
 
-<!-- REVIEWS -->
-<section id="reviews" class="section-glow">
-  <h2 class="text-center mb-4">Reviews</h2>
-  <div class="container review-slider">
-    <button class="slider-btn prev">&#10094;</button>
-    <button class="slider-btn next">&#10095;</button>
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
 
-    <div class="review-track">
-      <!-- 6 review cards -->
+    <section id="contact">
 
-      	<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Michael R. Dawson</h6>
-		    <p class="review-text mb-2">
-		      “Fast, professional, and affordable. They cleared out my garage in less than an hour and even swept afterward. Scheduling was easy and the crew was super friendly.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+        <div class="container">
 
-		<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Amanda L. Brooks</h6>
-		    <p class="review-text mb-2">
-		      “I called in the morning and they were able to come the same day. Great communication and fair pricing. I highly recommend them for any junk removal needs.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+            <div class="section-heading reveal">
 
-		<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Jason P. Miller
-</h6>
-		    <p class="review-text mb-2">
-		      “Outstanding service from start to finish. They removed old furniture and appliances without any hassle. The team was respectful and worked quickly.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+                <div class="eyebrow">✉️ Let's Talk</div>
 
-		<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Stephanie K. Turner</h6>
-		    <p class="review-text mb-2">
-		      “I’ve used other junk removal companies before, but this one was by far the best. On time, transparent pricing, and no mess left behind.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+                <h2>Contact Me</h2>
 
-		<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Robert J. Coleman</h6>
-		    <p class="review-text mb-2">
-		      “Excellent experience. They helped clean out a rental property and handled everything efficiently. Saved me a lot of time and stress.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+                <p>
+                    Have an idea, project, or technical challenge?
+                    Tell me a little about it.
+                </p>
 
-		<div class="review-card">
-		  <div class="card text-center">
-		    <img src="/assets/img/default-profile.jpg" class="review-img rounded-circle mx-auto mb-2">
-		    <h6 class="mb-1">Lisa M. Hernandez</h6>
-		    <p class="review-text mb-2">
-		      “Very impressed with their professionalism. Booking was simple, and the crew arrived exactly when promised. I will definitely use them again.”
-		    </p>
-		    ⭐⭐⭐⭐⭐
-		  </div>
-		</div>
+            </div>
 
 
-    </div>
-  </div>
-</section>
+            <div class="contact-grid">
 
-<!-- HOW IT WORKS -->
-<section id="how" class="section-fade">
-  <h2 class="text-center mb-3">How it works</h2>
-  <p class="text-center container">
-    Getting rid of unwanted junk has never been easier. Simply schedule your junk removal appointment online or by phone, and our friendly team will confirm a time that works best for you, often with same-day or next-day availability. When we arrive, just point to the items you want removed and we’ll take care of all the heavy lifting, loading, and cleanup, so you don’t have to lift a finger. Before we begin, you’ll receive a clear, upfront price based on the volume and type of junk, with no hidden fees or surprises. Once approved, our fully licensed and insured crew efficiently removes everything from furniture and appliances to yard waste and construction debris. After loading, we sweep the area clean and ensure your space is left neat and clutter-free. Whenever possible, we responsibly recycle or donate usable items, minimizing landfill waste and helping local communities. From start to finish, our process is fast, transparent, and stress-free, designed to give you peace of mind and a clean space in just one visit.
-  </p>
-</section>
+                <div class="contact-intro reveal">
 
-<!-- FAQ -->
-<section>
-  <h2 class="text-center mb-4">FAQ</h2>
-  <div class="container accordion" id="faq">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">
-          What items do you remove?
-        </button>
-      </h2>
-      <div id="q1" class="accordion-collapse collapse show">
-        <div class="accordion-body">
-          We remove most non-hazardous items, including furniture, appliances, mattresses, electronics, yard waste, construction debris, and general household junk. If you’re unsure about a specific item, just give us a call.
+                    <h3>
+                        Let's turn your idea into something useful. 🚀
+                    </h3>
+
+                    <p>
+                        Whether you're building a new application,
+                        improving an existing system, integrating an API,
+                        or looking for help with a complex web project,
+                        I'd love to hear what you're working on.
+                    </p>
+
+                    <div class="contact-note">
+                        💡 <strong>Note:</strong> This contact form is
+                        currently a visual placeholder and is not connected
+                        to a backend or email service yet.
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form reveal" id="contactForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input
+                                id="name"
+                                type="text"
+                                placeholder="John Doe"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="john@example.com"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input
+                                id="phone"
+                                type="tel"
+                                placeholder="+63 900 000 0000"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input
+                                id="company"
+                                type="text"
+                                placeholder="Your company"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="contact-method">
+                                Preferred Contact Method
+                            </label>
+
+                            <select id="contact-method">
+                                <option value="">Select one</option>
+                                <option>Email</option>
+                                <option>Phone</option>
+                                <option>SMS</option>
+                                <option>Video Call</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="project-type">
+                                Project Type
+                            </label>
+
+                            <select id="project-type">
+                                <option value="">Select project type</option>
+                                <option>Website</option>
+                                <option>Web Application</option>
+                                <option>WordPress</option>
+                                <option>Laravel</option>
+                                <option>API Integration</option>
+                                <option>Database / Backend</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget</label>
+
+                            <select id="budget">
+                                <option value="">Select budget</option>
+                                <option>Under $500</option>
+                                <option>$500 – $1,000</option>
+                                <option>$1,000 – $3,000</option>
+                                <option>$3,000 – $5,000</option>
+                                <option>$5,000+</option>
+                                <option>Let's discuss</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="best-time">
+                                Best Time to Contact
+                            </label>
+
+                            <input
+                                id="best-time"
+                                type="text"
+                                placeholder="e.g. Weekdays, 9 AM – 5 PM"
+                            >
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="message">
+                                Tell Me About Your Project *
+                            </label>
+
+                            <textarea
+                                id="message"
+                                placeholder="Tell me about your project, goals, requirements, timeline, or anything else that might be useful..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Send Project Inquiry ✨
+                    </button>
+
+                </form>
+
+            </div>
+
         </div>
-      </div>
-    </div>
 
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q2">
-            Do you offer same-day or next-day service?
-          </button>
-       </h2>
+    </section>
 
-      <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Yes! We offer same-day and next-day junk removal in most areas, depending on availability. Call us early for the best chance at same-day pickup.
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <h3>
+                    Andrian Patrick Catag<span style="color:#38bdf8;">.</span>
+                </h3>
+
+                <p>
+                    Full-Stack Web Developer focused on building
+                    reliable systems, thoughtful interfaces, and
+                    solutions that actually solve problems.
+                </p>
+
+                <div class="footer-code">
+                    &lt;code&gt; build · test · improve · repeat &lt;/code&gt;
+                </div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <!-- Replace these placeholders later -->
+
+                <span class="footer-link">GitHub</span>
+                <span class="footer-link">LinkedIn</span>
+                <span class="footer-link">Email</span>
+                <span class="footer-link">Portfolio</span>
+
+            </div>
+
         </div>
-      </div>
-    </div>
 
 
+        <div class="footer-bottom">
 
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q3">
-            How much does junk removal cost?
-          </button>
-       </h2>
-
-      <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Pricing is based on the volume of junk, item type, and labor required. We provide upfront, no-obligation quotes before starting any work, no hidden fees.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q4">
-            Do I need to be present during the pickup?
-          </button>
-       </h2>
-
-      <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Not always. As long as we have clear access to the items and prior approval, we can remove your junk even if you’re not on-site.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q5">
-            Are you licensed and insured?
-          </button>
-       </h2>
-
-      <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Yes. We are fully licensed and insured, so your property is protected while we work.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q6">
-            Do you recycle or donate items?
-          </button>
-       </h2>
-
-      <div id="q6" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Absolutely. We make every effort to recycle, donate, or responsibly dispose of items whenever possible to minimize landfill waste.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q7">
-            What items can’t you take?
-          </button>
-       </h2>
-
-      <div id="q7" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          We cannot remove hazardous materials such as chemicals, paint, asbestos, medical waste, or flammable liquids. Contact us if you’re unsure, we’ll guide you.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q8">
-            How do I schedule a pickup?
-          </button>
-       </h2>
-
-      <div id="q8" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          You can schedule online through our booking form or call us directly. Our team will confirm the time and provide a clear quote before removal.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q9">
-            Do you handle commercial junk removal?
-          </button>
-       </h2>
-
-      <div id="q9" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Yes. We offer junk removal for businesses, offices, retail spaces, property managers, and construction sites.
-        </div>
-      </div>
-    </div>
-
-
-    
-
-    <div class="accordion-item">
-       <h2 class="accordion-header">
-          <button class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#q10">
-            Will you clean up after removing the junk?
-          </button>
-       </h2>
-
-      <div id="q10" class="accordion-collapse collapse" data-bs-parent="#faq">
-        <div class="accordion-body">
-          Yes. After removal, we sweep and clean the area, leaving your space neat and clutter-free.
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-</section>
-
-<!-- FORM -->
-<section id="form" class="bg-light" style="padding-top: 170px;">
-  <h2 class="text-center mb-4">Schedule an appointment now</h2>
-  <div class="container">
-    <form class="row g-3 main-form" id="contactForm" style="scroll-margin-top: 210px;">
-      <div class="response-container">
-      </div>
-
-      <div class="col-md-6"><label>Firstname:</label><input class="form-control firstname" placeholder="First name"></div>
-      <div class="col-md-6"><label>Lastname:</label><input class="form-control lastname" placeholder="Last name"></div>
-      <div class="col-md-6"><label>Email:</label><input class="form-control email" placeholder="Email"></div>
-      <div class="col-md-6"><label>Phone number</label><input class="form-control phone" placeholder="Phone number"></div>
-      <div class="col-md-12"><label>Zipcode</label><input class="form-control zipcode" placeholder="Zip code"></div>
-
-      <div class="col-md-12"><label>Location:</label><input class="form-control location-from" placeholder="Location"></div>
-      <div class="col-md-12"><label>Location to: <small>(optional)</small></label><input class="form-control location-to" placeholder="Location To"></div>
-
-
-      <div class="col-md-12"><label>Message</label><textarea name="messagedata" class="form-control messagedata" rows="5" placeholder="Message"></textarea></div>
-
-      <div class="col-md-12 radio-input-container mt-5">
-        <h3>Select Service</h3>
-        <div class="radio-group">
-
-
-          <input type="hidden" name="servicesSelected" class="services-selected">
-
-          <label class="radio-card">
-            <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk Removal" required>
-            <span class="radio-content">
-              <strong>Junk Removal</strong>
+            <span>
+                © 2026 Andrian Patrick Catag. All rights reserved.
             </span>
-          </label>
 
-          <label class="radio-card">
-            <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Move-Out" required>
-            <span class="radio-content">
-              <strong>Move-Out</strong>
+            <span>
+                Built with curiosity, clean code & ☕
             </span>
-          </label>
-
-          <label class="radio-card">
-            <input type="checkbox" name="serviceType[]" class="radio-input-service" value="Junk and Moveout" required>
-            <span class="radio-content">
-              <strong>Junk and Moveout</strong>
-            </span>
-          </label>
-
-
 
         </div>
-      </div>
 
-      <div class="col-12 text-center">
-        <button class="btn-eco submit-btn">Submit and we will call you</button>
-      </div>
-    </form>
-  </div>
-</section>
+    </div>
+
+</footer>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* ---------------------------------------------------------
+       MOBILE NAVIGATION
+    --------------------------------------------------------- */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navbar = document.getElementById("navbar");
+
+    menuToggle.addEventListener("click", () => {
+
+        const isOpen = navbar.classList.toggle("open");
+
+        menuToggle.classList.toggle("active", isOpen);
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        document.body.classList.toggle(
+            "menu-open",
+            isOpen
+        );
+
+    });
 
 
+    /* ---------------------------------------------------------
+       NAV BUTTONS
+       
+       Currently scrolls internally instead of navigating
+       externally. Replace these with your own links later.
+    --------------------------------------------------------- */
+
+    document.querySelectorAll("[data-target]").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const targetId = button.dataset.target;
+            const target = document.getElementById(targetId);
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+            // Close mobile menu
+            navbar.classList.remove("open");
+            menuToggle.classList.remove("active");
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+            document.body.classList.remove("menu-open");
+
+        });
+
+    });
 
 
+    /* ---------------------------------------------------------
+       SCROLL REVEAL
+    --------------------------------------------------------- */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.08
+        }
+    );
 
 
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
 
 
+    /* ---------------------------------------------------------
+       CONTACT FORM
+       
+       Visual only — no backend.
+    --------------------------------------------------------- */
+
+    document
+        .getElementById("contactForm")
+        .addEventListener("submit", event => {
+
+            event.preventDefault();
+
+            alert(
+                "Thanks! The contact form is currently a visual demo and has not been connected to a backend yet."
+            );
+
+        });
 
 
+    /* ---------------------------------------------------------
+       CLOSE MOBILE MENU WHEN ESCAPE IS PRESSED
+    --------------------------------------------------------- */
 
+    document.addEventListener("keydown", event => {
 
+        if (event.key === "Escape") {
 
+            navbar.classList.remove("open");
 
+            menuToggle.classList.remove("active");
 
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
+            document.body.classList.remove("menu-open");
 
+        }
 
-
-<script type="text/javascript">
-  jQuery( document ).ready(function(){
-
-
-
-    // slider
-    let index=0;
-    const track=document.querySelector('.review-track');
-    const cards=document.querySelectorAll('.review-card').length;
-    document.querySelector('.next').onclick=()=>{index=Math.min(index+1,cards-3);track.style.transform=`translateX(-${index*33.33}%)`;}
-    document.querySelector('.prev').onclick=()=>{index=Math.max(index-1,0);track.style.transform=`translateX(-${index*33.33}%)`;}
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-// hero slider BG
-  var backgroundsjunkremoval = [
-      '',
-      '/assets/img/10b1bc00-5e90-4812-bb9e-454da694479c.jpg',
-      '/assets/img/1386a671-a17f-4d90-84cd-3dd084c5b95c.jpg',
-      '/assets/img/56258208-fd80-4e35-8bf8-5f01cf9e5e84.jpg'
-  ];
-
-
-  var backgroundsmovepros = [
-      '',
-      '/assets/img/0071e529-ba9c-453a-a079-7d8724629abb.jpg',
-      '/assets/img/a8ec3554-ac8a-46ce-a41e-296a074c2aad.jpg',
-      '/assets/img/60abad55-52b8-45ec-ae2f-fcaa402e6b05.jpg'
-  ];
-
-  var currentBackground = 0;
-  var sliderJunk = jQuery('.hero-card.junk-removal-hero ');
-  var sliderMove = jQuery('.hero-card.move-hero ');
-
-  // Function to change the background and trigger the slide
-  function changeBackground() {
-
-      currentBackground = (currentBackground + 1) ;
-
-      if( currentBackground > 3 ){
-        currentBackground = 1
-      }
-
-      sliderJunk.css({
-        'background': 'linear-gradient(to bottom, #6495AF, transparent), url("' + backgroundsjunkremoval[currentBackground] + '")',
-        'background-size': 'cover', // Or '100% 100%', 'contain' [7, 8]
-        'background-repeat': 'no-repeat', // Or '100% 100%', 'contain' [7, 8]
-        'background-position': 'center center'
-      });
-
-      sliderMove.css({
-        'background': 'linear-gradient(to bottom, #6495AF, transparent), url("' + backgroundsmovepros[currentBackground] + '")',
-        'background-size': 'cover', // Or '100% 100%', 'contain' [7, 8]
-        'background-repeat': 'no-repeat', // Or '100% 100%', 'contain' [7, 8]
-        'background-position': 'center center'
-      });
-
-
-
-  }
-
-  // Set an interval to call the changeBackground function every 3 seconds (3000 milliseconds)
-  setInterval(changeBackground, 5000);
-
-
-
-
-  // jQuery("a").click(function(e){
-  //   e.preventDefault();
-  //   changeBackground();
-  // });
-
-});
-
-
+    });
 
 </script>
+```
+
+</body>
+</html>
+
+
+
 
 <?php include("template-parts/footer.php"); ?>

@@ -1,8 +1,8 @@
 <?php
 // Vars
 $page = "login";
-$pagetitle = "Login | Junk Removal";
-$description = "Full-service junk removal company offering residential and commercial hauling. We remove furniture, appliances, yard waste, and construction debris with same-day and eco-friendly disposal.";
+$pagetitle = "Login | Patrick Portfolio";
+$description = "Into the deep.";
 
 
 include("template-parts/header-admin.php");

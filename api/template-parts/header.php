@@ -4,25 +4,7 @@
 include(__DIR__."/../init/database.php");
 include(__DIR__."/../init/main-functions.php"); 
 
-
-// Override meta description if has value
-if( isset( $_GET['id'] ) && $_GET['id'] ){
-  $article_data = get_article_single( $_GET['id'] );
-  if( isset( $article_data['meta_description'] ) && $article_data['meta_description'] ){
-    $description = $article_data['meta_description'];
-  }
-
-  //meta image
-  if( isset( $article_data['img_url'] ) && $article_data['img_url'] ){
-    $get_meta_img = json_decode( $article_data['img_url'], true );
-    if( isset( $get_meta_img[0] ) && $get_meta_img[0] ){
-      $meta_img = $base_assets."/article_imgs/".$get_meta_img[0];
-    }
-  }
-
-
-}
-
+/*
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +60,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
 
     body{scroll-behavior:smooth;}
 
-    /* HEADER */
     header{
       position:sticky;
       top:0;
@@ -106,7 +87,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
     }
     .btn-eco:hover{opacity:.9;}
 
-    /* PROMO BAR */
     .promo{
       background:red;
       color:white;
@@ -115,7 +95,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
       font-weight:bold;
     }
 
-    /* HERO */
     .hero{
 
       display: grid;
@@ -128,8 +107,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
         padding-top:0px;
         padding-bottom: 30px;
 
-/*        transition: background-position 1s ease-in-out;*/
-        overflow: hidden; /* Ensures the sliding effect stays within bounds */
     }
 
 
@@ -139,7 +116,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
     }
 
     .card-inner-scrollable::-webkit-scrollbar{
-/*        color: #000;*/
         display: none;
     }
     .card-inner-scrollable::-webkit-scrollbar-button {
@@ -170,10 +146,8 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
       background-repeat: no-repeat;
       min-height: 400px;
       width: 100%;
-/*      max-width:85%;*/
 
 
-/*      background:white;*/
       padding:30px;
       margin: 0 auto;
     }
@@ -239,9 +213,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
 
     @media(max-width: 1200px){
 
-      /*.hero-card{
-        max-width:80%;
-      }*/
     }
 
     @media(max-width: 991px){
@@ -271,12 +242,10 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
 
     }
 
-    /* SECTIONS */
     section{padding:70px 20px;}
     .bg-light{background:var(--light);}
     .bg-green{background:var(--eco-green);color:white;}
 
-    /* CARDS */
     .service-card img{width:100%;border-radius:10px;}
     .service-card{
       background:white;
@@ -285,7 +254,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
       height:100%;
     }
 
-    /* REVIEWS */
     .review-slider{overflow:hidden;position:relative;}
     .review-track{
       display:flex;
@@ -319,7 +287,6 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
     .prev{left:0;}
     .next{right:0;}
 
-    /* FOOTER */
     footer{background:var(--eco-green);color:white;padding:40px 20px;}
     footer a{color:white;text-decoration:none;}
     footer a:hover{text-decoration:underline;}
@@ -410,4 +377,4 @@ if( isset( $_GET['id'] ) && $_GET['id'] ){
 
 
 
-	<?php include(__DIR__."/../template-parts/auth-modal.php"); ?>
+	<?php include(__DIR__."/../template-parts/auth-modal.php"); */ ?>

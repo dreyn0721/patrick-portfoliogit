@@ -315,7 +315,7 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
 
 
 
-
+/*
   if( $headers['action'] == "comment" ){
 
     $current_time = date('m/d/Y H:i:s');
@@ -395,7 +395,7 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
     exit();
           
 
-  }
+  }*/
 
 
 
@@ -407,7 +407,7 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
 
 
 
-
+/*
   if( $headers['action'] == "article-post" ){
 
     $current_time = date('m/d/Y H:i:s');
@@ -543,15 +543,6 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
       $json_imgs = json_encode( $saved_imgs );
 
 
-/*
-      $type = pathinfo( $_FILES['article_img']['tmp_name'], PATHINFO_EXTENSION);
-
-      $imageData = file_get_contents( $_FILES['article_img']['tmp_name'] );
-      if( isset( $imageData ) && $imageData ){
-
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode( $imageData );
-      }*/
-
       //insert data and return success
       $sql = "INSERT INTO articles 
       (title, description, img_url, posted_by_id, datetimeinserted, meta_description) 
@@ -587,7 +578,7 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
     pg_close($conn);
     exit( json_encode( $response ) );
   }
-
+*/
 
 
 
@@ -1083,7 +1074,7 @@ if( isset( $headers ) && isset( $headers['action'] ) && $headers['action'] ){
 
 
 
-
+/*
 function get_junk_removal_entries(){
   global $conn;
   $entries = [];
@@ -1098,7 +1089,7 @@ function get_junk_removal_entries(){
   }
 
   return $entries;
-}
+}*/
 
 
 

@@ -1,8 +1,8 @@
 <?php 
 // Vars
 $page = "dashboard";
-$pagetitle = "Dashboard | Junk Removal";
-$description = "Full-service junk removal company offering residential and commercial hauling. We remove furniture, appliances, yard waste, and construction debris with same-day and eco-friendly disposal.";
+$pagetitle = "Login | Patrick Portfolio";
+$description = "Into the deep.";
 
 include("template-parts/header-admin.php");
 
@@ -12,7 +12,7 @@ include("template-parts/header-admin.php");
 
 
 
-  <?php $entries = get_junk_removal_entries(); ?>
+  <?php /* $entries = get_junk_removal_entries(); ?>
 
 
 
@@ -54,6 +54,7 @@ include("template-parts/header-admin.php");
 
        </tbody>
      </table>
+     <?php */ ?>
 </div>
 
 <script type="text/javascript">
@@ -68,7 +69,7 @@ include("template-parts/header-admin.php");
 
 
 
-
+/*
     $('#entriesContainer').DataTable({
           paging: true,       // Enable pagination
           searching: true,    // Enable search box
@@ -76,7 +77,7 @@ include("template-parts/header-admin.php");
           info: true,         // Show table info
           responsive: true,    // Make table responsive
           order: [[1, 'desc']]
-      });
+      });*/
 
 
   });
