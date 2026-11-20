@@ -1129,7 +1129,7 @@ include("template-parts/header.php");
         <div class="brand-mark">AC</div>
 
         <div class="brand-text">
-            <strong>Andrian Catag</strong>
+            <strong>Andrian Patrick Catag</strong>
             <span>Full-Stack Developer</span>
         </div>
     </div>
