@@ -1226,8 +1226,7 @@ include("template-parts/header.php");
                     </div>
 
                     <h1 class="hero-title">
-                        I'm Andrian Patrick
-                        <span class="gradient">Catag.</span>
+                        I'm <span class="gradient">Andrian Patrick Catag.</span>
                     </h1>
 
                     <p class="hero-subtitle">
